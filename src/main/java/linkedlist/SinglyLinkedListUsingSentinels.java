@@ -1,8 +1,8 @@
 package linkedlist;
 
 /**
- * 使用標兵(Sentinels) 參考資料結構與演算法 java 書籍
- * todo test
+ * 使用標兵(Sentinels) 參考資料結構與演算法 java 書籍 todo test
+ * 
  * @author user
  *
  * @param <E>
@@ -11,7 +11,8 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 
 	private Node<E> head = null;
 	private Node<E> tail = null;
-
+	private int size;
+	
 	public SinglyLinkedListUsingSentinels() {
 		head = new Node(null);
 		tail = new Node(null);
@@ -19,14 +20,29 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	}
 
 	@Override
+	public void add(E newElement) {
+		
+
+	}
+
+
+	
+	@Override
+	public int size() {
+		
+		return size;
+	}
+
+	@Override
 	public void addFirst(E newElement) {
 		Node newNode = new Node(newElement);
-		addBetween(newNode,head,head.next);
+		addBetween(newNode, head, head.next);
 	}
 
 	private void addBetween(Node newNode, Node predecessor, Node suiccessor) {
 		newNode.setNext(suiccessor);
 		predecessor.setNext(newNode);
+		size++;
 	}
 
 	private class Node<E> {
@@ -48,5 +64,12 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 			return this.element.toString();
 		}
 	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }
