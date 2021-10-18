@@ -4,7 +4,6 @@ package linkedlist;
  * 使用標兵(Sentinels) 參考資料結構與演算法 java 書籍 todo test
  * 
  * @author user
- *
  * @param <E>
  */
 public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
@@ -35,7 +34,7 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 
 	@Override
 	public void addFirst(E newElement) {
-		Node newNode = new Node(newElement);
+		Node<E> newNode = new Node(newElement);
 		addBetween(newNode, head, head.next);
 	}
 
@@ -69,6 +68,24 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean add(int index, E newElement) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public E removeLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E removeFirst() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

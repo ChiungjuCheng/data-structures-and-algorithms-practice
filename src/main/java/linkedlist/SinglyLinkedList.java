@@ -4,7 +4,6 @@ package linkedlist;
  * No sentinels verison
  * 
  * @author user
- *
  * @param <E>
  */
 public class SinglyLinkedList<E> implements ListDemo<E> {
@@ -17,7 +16,45 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	}
 
 	// O(1)
-	/** insert to the last index*/
+	@Override
+	public E removeFirst() {
+		Node<E> firstNode = head;
+
+		// when size = 1
+		if (size() != 1) {
+			head = head.next;
+		} else {
+			// when size > 1
+			head = null;
+			tail = null;
+		}
+
+		size--;
+
+		return firstNode.element;
+	}
+
+	@Override
+	public E removeLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * TODO adding element in specific index of list.
+	 * 
+	 * @return true when success
+	 */
+	public boolean add(int index, E newElement) {
+		// when index is out of the range.
+
+		// when index is in the range
+
+		return true;
+	}
+
+	// O(1)
+	/** insert to the last index */
 	@Override
 	public void add(E newElement) {
 
@@ -30,6 +67,7 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 			Node<E> previousTailNode = tail;
 			tail = newTailNode;
 			previousTailNode.next = newTailNode;
+			size++;
 		}
 	}
 
@@ -74,9 +112,6 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	private class Node<E> {
 		E element;
 		Node<E> next;
-
-		Node() {
-		}
 
 		Node(E element) {
 			this.element = element;

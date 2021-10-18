@@ -8,8 +8,14 @@ package linkedlist;
  */
 public interface ListDemo<E> {
 	void add(E newElement);
+	
+	boolean add(int index, E newElement);
 
 	void addFirst(E newElement);
+	
+	E removeLast();
+	
+	E removeFirst();
 
 	int size();
 
