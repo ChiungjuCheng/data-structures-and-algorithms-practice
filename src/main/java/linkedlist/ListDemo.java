@@ -9,7 +9,7 @@ package linkedlist;
 public interface ListDemo<E> {
 	void add(E newElement);
 	
-	boolean add(int index, E newElement);
+	void add(int index, E newElement);
 
 	void addFirst(E newElement);
 	
@@ -20,4 +20,6 @@ public interface ListDemo<E> {
 	int size();
 
 	boolean isEmpty();
+	
+	void clear();
 }

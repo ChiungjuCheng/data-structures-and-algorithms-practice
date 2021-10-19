@@ -18,26 +18,48 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	// O(1)
 	@Override
 	public E removeFirst() {
+		if (isEmpty()) {
+			return null;
+		}
 		Node<E> firstNode = head;
 
-		// when size = 1
-		if (size() != 1) {
-			head = head.next;
-		} else {
-			// when size > 1
+		if (size() == 1) {
 			head = null;
 			tail = null;
+		} else {
+			// when size > 1
+			head = head.next;
 		}
-
 		size--;
 
 		return firstNode.element;
 	}
 
+	// O(n)
 	@Override
 	public E removeLast() {
-		// TODO Auto-generated method stub
-		return null;
+
+		if (isEmpty()) {
+			return null;
+		}
+
+		Node<E> firstNode = tail;
+		// when size = 1
+		if (size() == 1) {
+			head = null;
+			tail = null;
+		} else {
+			// when size > 1
+			Node<E> priorToLast = head;
+			while (priorToLast.next != tail) {
+				priorToLast = priorToLast.next;
+			}
+			tail = priorToLast;
+			priorToLast.next = null;
+		}
+		size--;
+
+		return firstNode.element;
 	}
 
 	/**
@@ -45,12 +67,55 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	 * 
 	 * @return true when success
 	 */
-	public boolean add(int index, E newElement) {
-		// when index is out of the range.
+	public void add(int index, E newElement) {
 
-		// when index is in the range
+		if (index < 0) {
+			return;
+		}
 
-		return true;
+		// insert to first
+		if (index == 0) {
+			addFirst(newElement);
+			return;
+		}
+
+		// insert to last position
+		if (size() == index) {
+			add(newElement);
+			return;
+		}
+
+		// insert to middle and over bound position
+		Node<E> newNode = new Node<E>(newElement);
+		if (isEmpty()) {
+			head = new Node(null);
+		}
+		Node<E> previousTargetPositionNode = null;
+		Node<E> targetPositionNode = head;
+		boolean isIndexOutOfBounds = false;
+		int newNodeNumber = 1;
+
+		for (int i = 1; i <= index; i++) {
+
+			if (targetPositionNode.next == null) {
+				targetPositionNode.next = new Node(null);
+				isIndexOutOfBounds = true;
+				newNodeNumber++;
+			}
+			previousTargetPositionNode = targetPositionNode;
+			targetPositionNode = targetPositionNode.next;
+		}
+
+		previousTargetPositionNode.next = newNode;
+
+		if (isIndexOutOfBounds) {
+			newNodeNumber--; // delete the last null value Node which is replace by new Node
+		} else {
+			newNode.next = targetPositionNode;
+		}
+
+		size += newNodeNumber;
+
 	}
 
 	// O(1)
@@ -80,11 +145,11 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	@Override
 	public void addFirst(E newElement) {
 		Node<E> newNode = new Node<E>(newElement);
-		if (head == null) {
+		if (isEmpty()) {
 			head = newNode;
 			tail = newNode;
 		} else {
-			newNode.setNext(head);
+			newNode.next = head;
 			head = newNode;
 		}
 		size++;
@@ -93,6 +158,13 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	@Override
 	public int size() {
 		return size;
+	}
+
+	@Override
+	public void clear() {
+		head = null;
+		tail = null;
+		size = 0;
 	}
 
 	@Override
@@ -122,7 +194,7 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 		}
 
 		public String toString() {
-			return this.element.toString();
+			return this.element != null ? this.element.toString() : "Null";
 		}
 	}
 

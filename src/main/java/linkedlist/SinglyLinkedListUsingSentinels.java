@@ -71,9 +71,8 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	}
 
 	@Override
-	public boolean add(int index, E newElement) {
+	public void add(int index, E newElement) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -86,6 +85,12 @@ public class SinglyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	public E removeFirst() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 
