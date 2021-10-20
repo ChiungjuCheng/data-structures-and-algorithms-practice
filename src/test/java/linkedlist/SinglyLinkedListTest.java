@@ -1,6 +1,7 @@
 package linkedlist;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -150,6 +151,22 @@ public class SinglyLinkedListTest {
 		System.out.println("testAddInSpecificPosition : " + singlyLinkedList.toString());
 		assertEquals(4, singlyLinkedList.size());
 		
+	}
+	
+	@Test
+	public void testGet() {
+		SinglyLinkedList<String> singlyLinkedList = new SinglyLinkedList<>();
+		singlyLinkedList.add("A");
+		singlyLinkedList.add("B");
+		System.out.println("testGet : " + singlyLinkedList.toString());
+		
+		String result1 = singlyLinkedList.get(0);
+		String result2 = singlyLinkedList.get(1);
+		assertEquals("A", result1);
+		assertEquals("B", result2);
+		
+		String nullResult =  singlyLinkedList.get(3);
+		assertNull(nullResult);
 	}
 
 }

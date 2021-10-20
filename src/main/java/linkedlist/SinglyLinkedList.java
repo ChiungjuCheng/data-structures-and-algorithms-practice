@@ -12,7 +12,25 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 	private Node<E> tail = null;
 	private int size;
 
-	public SinglyLinkedList() {
+	public SinglyLinkedList() {}
+	
+	@Override
+	public E get(int index) {
+		
+		if(isEmpty()) {
+			return null;
+		}
+		
+		if(index >= size()) {
+			return null;
+		}
+		
+		Node<E> currentNode = head;
+		for(int i = 0; i < index; i++) {
+			currentNode = currentNode.next;
+		}
+		
+		return currentNode.element;
 	}
 
 	// O(1)
@@ -189,13 +207,11 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 			this.element = element;
 		}
 
-		void setNext(Node<E> nextNode) {
-			this.next = nextNode;
-		}
-
 		public String toString() {
 			return this.element != null ? this.element.toString() : "Null";
 		}
 	}
+
+	
 
 }

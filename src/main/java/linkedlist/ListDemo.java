@@ -13,6 +13,8 @@ public interface ListDemo<E> {
 
 	void addFirst(E newElement);
 	
+	E get(int index);
+	
 	E removeLast();
 	
 	E removeFirst();
