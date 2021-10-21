@@ -47,6 +47,19 @@ public class DoublyLinkedListUsingSentinelsTest {
 	}
 	
 	@Test
+	public void testGetByIndex() {
+		ListDemo<String> doublyLinkedList = new DoublyLinkedListUsingSentinels<>();
+		doublyLinkedList.add("A");
+		doublyLinkedList.add("B");
+		doublyLinkedList.add("C");
+		
+		assertEquals("A", doublyLinkedList.get(0));
+		assertEquals("B", doublyLinkedList.get(1));
+		assertEquals("C", doublyLinkedList.get(2));
+		assertNull(doublyLinkedList.get(3));
+	}
+	
+	@Test
 	public void testRemoveLast() {
 		ListDemo<String> doublyLinkedList = new DoublyLinkedListUsingSentinels<>();
 		assertNull(doublyLinkedList.removeLast());
@@ -63,5 +76,29 @@ public class DoublyLinkedListUsingSentinelsTest {
 		
 		assertEquals("C", doublyLinkedList.removeLast());
 		assertEquals("AB",doublyLinkedList.toString());
+	}
+	
+	@Test
+	public void testRemoveFirst() {
+		ListDemo<String> doublyLinkedList = new DoublyLinkedListUsingSentinels<>();
+		assertNull(doublyLinkedList.removeFirst());
+		
+		doublyLinkedList.add("A");
+		doublyLinkedList.add("B");
+		doublyLinkedList.add("C");
+		assertEquals("A", doublyLinkedList.removeFirst());
+		assertEquals("BC",doublyLinkedList.toString());
+	}
+	
+	@Test
+	public void addByIndex() {
+		ListDemo<String> doublyLinkedList = new DoublyLinkedListUsingSentinels<>();
+		doublyLinkedList.add("A");
+		doublyLinkedList.add("B");
+		doublyLinkedList.add("C");
+		
+		doublyLinkedList.add(1, "D");
+		assertEquals(4, doublyLinkedList.size());
+		assertEquals("ADBC",doublyLinkedList.toString());
 	}
 }
