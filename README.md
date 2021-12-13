@@ -1,2 +1,2 @@
 # DataStructuresAndAlgorithms
-嘗試實作各種Data structure以了解其背後運作的原理和時間複雜度
+嘗試實作各種Data structure已了解其背後運作的原理和時間複雜度
