@@ -101,4 +101,16 @@ public class DoublyLinkedListUsingSentinelsTest {
 		assertEquals(4, doublyLinkedList.size());
 		assertEquals("ADBC",doublyLinkedList.toString());
 	}
+	
+	@Test
+	public void iterator() {
+		ListDemo<String> doublyLinkedList = new DoublyLinkedListUsingSentinels<>();
+		doublyLinkedList.add("A");
+		doublyLinkedList.add("B");
+		doublyLinkedList.add("C");
+		
+		for(String element : doublyLinkedList) {
+			System.out.println(element);
+		}
+	}
 }

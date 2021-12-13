@@ -1,5 +1,8 @@
 package linkedlist;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * 使用標兵(Sentinels) 參考資料結構與演算法 java 書籍
  * 
@@ -34,9 +37,9 @@ public class DoublyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	@Override
 	public void add(int index, E newElement) {
 		Node<E> targetPositonNode = getNode(index);
-		if(targetPositonNode == null) {
+		if (targetPositonNode == null) {
 			return;
-		}		
+		}
 		addBetween(newElement, targetPositonNode.pre, targetPositonNode);
 	}
 
@@ -79,7 +82,7 @@ public class DoublyLinkedListUsingSentinels<E> implements ListDemo<E> {
 	@Override
 	public E get(int index) {
 		Node<E> targetNode = getNode(index);
-		return targetNode != null? targetNode.element : null;
+		return targetNode != null ? targetNode.element : null;
 	}
 
 	// O(N)
@@ -147,6 +150,42 @@ public class DoublyLinkedListUsingSentinels<E> implements ListDemo<E> {
 		public String toString() {
 			return this.element != null ? this.element.toString() : "Null";
 		}
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		return new LstIterator();
+	}
+
+	private class LstIterator implements Iterator<E> {
+
+		private int nextIndex;
+		private Node<E> nextNode;
+
+		private LstIterator() {
+			this.nextIndex = 0;
+			this.nextNode = head.next;
+		}
+
+		@Override
+		public boolean hasNext() {
+
+			return size > nextIndex;
+		}
+
+		@Override
+		public E next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+
+			Node<E> currentNode = nextNode;
+			nextNode = nextNode.next;
+			nextIndex++;
+
+			return currentNode.element;
+		}
+
 	}
 
 }

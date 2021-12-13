@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.Iterator;
+
 /**
  * No sentinels verison
  * 
@@ -210,6 +212,12 @@ public class SinglyLinkedList<E> implements ListDemo<E> {
 		public String toString() {
 			return this.element != null ? this.element.toString() : "Null";
 		}
+	}
+
+	@Override
+	public Iterator iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

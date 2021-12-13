@@ -6,7 +6,7 @@ package linkedlist;
  * @author user
  * @param <E>
  */
-public interface ListDemo<E> {
+public interface ListDemo<E> extends Iterable<E>{
 	void add(E newElement);
 	
 	void add(int index, E newElement);

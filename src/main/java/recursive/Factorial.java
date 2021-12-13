@@ -1,5 +1,7 @@
 package recursive;
 
+import java.util.LinkedList;
+
 /**
  * 階層
  *
@@ -10,6 +12,7 @@ public class Factorial {
 		
 		System.out.println(recursive(10));
 		System.out.println(nonrecursive(10));
+		
 	}
 	
 	public static int recursive(int n) {
