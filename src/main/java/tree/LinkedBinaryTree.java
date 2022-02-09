@@ -3,7 +3,7 @@ package tree;
 import java.util.Iterator;
 
 /**
- * 目前查到的add都會比較value，也許可以使用類似Breadth first search的方式找到空的? 
+ * 目前查到的add都會比較value，也許可以使用類似Breadth first search的方式找到空的?
  * https://www.baeldung.com/java-binary-tree
  * 
  * @author user
@@ -20,29 +20,28 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 		// addByRecursive
 		root = addByRecursive(root, element);
 
-		// addByWhile
+		// TODO addByWhile
 
 		size++;
 	}
 
 	/**
-	 * TODO Test
+	 * 使用遞迴新增 
 	 * @param currentPosition
 	 * @param element
+	 * @throws ClassCastException 若不是Comparable的element則拋出
 	 * @return
 	 */
 	public Node<E> addByRecursive(Position<E> currentPosition, E element) {
 		Node<E> currentNode = castToNode(currentPosition);
+		Comparable<E> k = (Comparable<E>) element;
 		if (currentNode == null) {
 			return new Node<E>(null, null, null, element);
 		}
 
-		// TODO check if the element is comparable
-		Comparable<E> k = (Comparable<E>) element;
-		
-		if(k.compareTo(currentNode.element) > 0) {
+		if (k.compareTo(currentNode.element) > 0) {
 			currentNode.rightChild = addByRecursive(currentNode.rightChild, element);
-		}else {
+		} else {
 			currentNode.leftChild = addByRecursive(currentNode.leftChild, element);
 		}
 
@@ -58,6 +57,8 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 		if (currentNode == null) {
 			root = new Node<E>(null, null, null, element);
 		}
+		
+		throw new UnsupportedOperationException("TODO addByWhile");
 
 	}
 

@@ -9,11 +9,14 @@ public class TreeTest {
 	@Test
 	public void testAdd() {
 		LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<>();
-		tree.add(1);
-		tree.add(2);
-		tree.add(3);
+		tree.add(10);
+		tree.add(5);
+		tree.add(15);
 		tree.add(4);
+		tree.add(6);
+		tree.add(14);
+		tree.add(16);
 		
-		assertEquals(4, tree.size);
+		assertEquals(7, tree.size);
 	}
 }
