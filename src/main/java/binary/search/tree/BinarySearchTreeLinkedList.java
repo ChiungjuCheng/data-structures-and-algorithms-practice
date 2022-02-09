@@ -10,7 +10,7 @@ public class BinarySearchTreeLinkedList {
 			return;
 		}
 
-		insertByRecursion(root, newData);
+		insertByRecursion2(root, newData);
 	}
 
 	private void insertByRecursion(Node root, int newData) {
@@ -29,6 +29,26 @@ public class BinarySearchTreeLinkedList {
 			insertByRecursion(root.getLeft(), newData);
 		}
 
+	}
+
+	private Node insertByRecursion2(Node root, int newData) {
+
+		if (root == null) {
+			return new Node(newData, null, null);
+		}
+
+		if (newData > root.getData()) {
+			root.setRight(insertByRecursion2(root.getRight(), newData));
+		} else {
+			root.setLeft(insertByRecursion2(root.getLeft(), newData));
+		}
+
+		return root;
+
+	}
+
+	private void clear() {
+		this.root = null;
 	}
 
 	private boolean isEmpty() {
